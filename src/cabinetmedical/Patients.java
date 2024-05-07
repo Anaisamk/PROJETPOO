@@ -8,7 +8,6 @@ package cabinetmedical;
  *
  * @author anais
  */
-   import java.util.ArrayList;
 
 
 
@@ -16,26 +15,23 @@ public class Patients {
     // Attributs
     private String nom;
     private String prenom;
-    private int age;
+    private String age;
     private String groupe_sanguin;
     private String sexe;
     private String num_tel;
-    private String adresse;
-    private ArrayList<String> antecedents_medicaux;
+
     private String num_dossier;
     private String num_assurance;
 
 
     // Constructeur
-    public Patients(String nom, String prenom, int age, String groupe_sanguin, String sexe, String num_tel, String adresse, ArrayList<String> antecedents_medicaux, String num_dossier, String num_assurance) {
+    public Patients(String nom, String prenom,String age, String groupe_sanguin, String sexe, String num_tel,String num_dossier, String num_assurance) {
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
         this.groupe_sanguin = groupe_sanguin;
         this.sexe = sexe;
         this.num_tel = num_tel;
-        this.adresse = adresse;
-        this.antecedents_medicaux = antecedents_medicaux;
         this.num_dossier = num_dossier;
         this.num_assurance = num_assurance;
     
@@ -50,7 +46,7 @@ public class Patients {
         return prenom;
     }
 
-    public int get_age() {
+    public String get_age() {
         return age;
     }
 
@@ -66,13 +62,6 @@ public class Patients {
         return num_tel;
     }
 
-    public String get_adresse() {
-        return adresse;
-    }
-
-    public ArrayList<String> get_antecedents_medicaux() {
-        return antecedents_medicaux;
-    }
 
     public String get_num_dossier() {
         return num_dossier;
@@ -91,7 +80,7 @@ public class Patients {
         this.prenom = prenom;
     }
 
-    public void set_age(int age) {
+    public void set_age(String age) {
         this.age = age;
     }
 
@@ -107,13 +96,8 @@ public class Patients {
         this.num_tel = num_tel;
     }
 
-    public void set_adresse(String adresse) {
-        this.adresse = adresse;
-    }
+ 
 
-    public void set_antecedents_medicaux(ArrayList<String> antecedents_medicaux) {
-        this.antecedents_medicaux = antecedents_medicaux;
-    }
 
     public void set_num_dossier(String num_dossier) {
         this.num_dossier = num_dossier;
@@ -134,11 +118,6 @@ public class Patients {
         System.out.println("groupe sanguin:"+groupe_sanguin);
         System.out.println("sexe:"+sexe);
         System.out.println("numero du telephone:"+num_tel);
-        System.out.println("adresse:"+adresse);
-        System.out.println("Antécédents médicaux:");
-           for (String antecedent : antecedents_medicaux) {
-              System.out.println("- " + antecedent);
-            }
         System.out.println("numero du dossier:"+num_dossier);
         System.out.println("numero d'assurance"+num_assurance);
     }
