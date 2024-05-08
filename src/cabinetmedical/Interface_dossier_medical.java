@@ -28,7 +28,7 @@ public class Interface_dossier_medical extends javax.swing.JFrame {
 // Initialiser la liste de dossiers médicaux
     this.listeDossiersMedicaux = new ArrayList<>();
     // Ajouter des dossiers médicaux fictifs pour le test
-    Patients patient1 = new Patients("Dupont", "Jean", 45, "A+", "Masculin", "1234567890", "123, Rue des Lilas, 75000 Paris", "001", "ABC123456789");
+    Patients patient1 = new Patients("Dupont", "Jean", "45", "A+", "Masculin", "1234567890",  "001", "ABC123456789");
     Prescription prescription1 = new Prescription("Paracétamol", "1 comprimé toutes les 6 heures", "Analyse sanguine", "À jeun");
     DossierMedical dossiermedical1 = new DossierMedical(111,patient1,"khra","khra",prescription1);
     listeDossiersMedicaux.add(dossiermedical1);
