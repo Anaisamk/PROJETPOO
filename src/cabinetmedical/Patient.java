@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cabinetmedical;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,13 +11,12 @@ package cabinetmedical;
  */
 public class Patient extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Patient
-     */
-    public Patient() {
-        initComponents();
-    }
+    private final LISTEPATIENTS listePatients;
 
+    public Patient(LISTEPATIENTS listePatients) {
+        initComponents();
+        this.listePatients = listePatients;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,6 +68,11 @@ public class Patient extends javax.swing.JFrame {
         });
 
         jButton2.setText("RECHERCHER PATIENT");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -78,9 +83,9 @@ public class Patient extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(85, 85, 85)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
                 .addComponent(jButton2)
-                .addGap(47, 47, 47))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,8 +249,6 @@ public class Patient extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:                                       
-    // Créer une instance de LISTEPATIENTS
-    LISTEPATIENTS listePatients = new LISTEPATIENTS();
     
     // Rendre la fenêtre actuelle invisible
     setVisible(false);
@@ -276,9 +279,10 @@ public class Patient extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NUM_DOSSIERActionPerformed
 
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        LISTEPATIENTS L = new LISTEPATIENTS();
+ 
 Patients patient = new Patients();
                 patient.set_nom(NOM.getText());
             patient.set_prenom(PRENOM.getText());
@@ -289,8 +293,8 @@ Patients patient = new Patients();
             patient.set_num_dossier(NUM_DOSSIER.getText());
             patient.set_num_assurance(NUM_ASSURANCE.getText());
 
-    // Ajouter le patient à la liste de patients
-   L.allPatients.add(patient);
+    // Ajouter le patient à la liste de patients de LISTEPATIENTS
+    listePatients.addPatient(patient);
 
     // Effacer les champs de saisie après l'ajout du patient
     NOM.setText("");
@@ -302,9 +306,6 @@ Patients patient = new Patients();
     NUM_DOSSIER.setText("");
     NUM_ASSURANCE.setText("");
 
-    // Mettre à jour l'affichage de la liste des patients
-    L.WriteAllData();
-    L.SaveAllData();
               
         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -313,40 +314,48 @@ Patients patient = new Patients();
         // TODO add your handling code here:
     }//GEN-LAST:event_NUM_TELActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                              
+    // Demander le nom du patient à rechercher
+    String nomRecherche = JOptionPane.showInputDialog(this, "Entrez le nom du patient à rechercher :", "Rechercher un patient", JOptionPane.QUESTION_MESSAGE);
+
+    // Vérifier si un nom a été saisi
+    if (nomRecherche != null && !nomRecherche.isEmpty()) {
+        // Parcourir la liste des patients pour trouver celui correspondant au nom saisi
+        boolean patientTrouve = false;
+        for (int i = 0; i < listePatients.allPatients.size(); i++) {
+            Patients patient = listePatients.allPatients.get(i);
+            if (patient.get_nom().equalsIgnoreCase(nomRecherche)) {
+                // Afficher les informations du patient
+                JOptionPane.showMessageDialog(this, "Nom: " + patient.get_nom() + "\nPrénom: " + patient.get_prenom() + "\nAge: " + patient.get_age() + "\nSexe: " + patient.get_sexe() + "\nGroupe Sanguin: " + patient.get_groupe_sanguin() + "\nNuméro de Téléphone: " + patient.get_num_tel() + "\nNuméro de Dossier: " + patient.get_num_dossier() + "\nNuméro d'Assurance: " + patient.get_num_assurance(), "Informations du patient", JOptionPane.INFORMATION_MESSAGE);
+                patientTrouve = true;
+                break;
+            }
+        }
+
+        // Si aucun patient correspondant n'a été trouvé, afficher un message
+        if (!patientTrouve) {
+            JOptionPane.showMessageDialog(this, "Aucun patient trouvé avec le nom " + nomRecherche, "Patient non trouvé", JOptionPane.WARNING_MESSAGE);
+        }
+    } else {
+        // Si aucun nom n'a été saisi, afficher un message
+        JOptionPane.showMessageDialog(this, "Veuillez saisir un nom de patient à rechercher", "Nom manquant", JOptionPane.WARNING_MESSAGE);
+    }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Patient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Patient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Patient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Patient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+ public static void main(String args[]) {
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            LISTEPATIENTS listePatients = new LISTEPATIENTS();
+            new Patient(listePatients).setVisible(true);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Patient().setVisible(true);
-            }
-        });
-    }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AGE;

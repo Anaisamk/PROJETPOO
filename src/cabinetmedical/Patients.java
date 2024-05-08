@@ -23,7 +23,15 @@ public class Patients {
     private String num_dossier;
     private String num_assurance;
 
-
+public Patients(){
+this.nom="";
+this.prenom="";
+this.age="";
+this.groupe_sanguin="";
+this.sexe="";
+this.num_tel="";
+this.num_dossier="";
+this.num_assurance="";}
     // Constructeur
     public Patients(String nom, String prenom,String age, String groupe_sanguin, String sexe, String num_tel,String num_dossier, String num_assurance) {
         this.nom = nom;
