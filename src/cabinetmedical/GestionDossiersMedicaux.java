@@ -52,5 +52,13 @@ public class GestionDossiersMedicaux{
            }
 
     }
+    
+    //afficher un dossier medical specifique
+    public void affichage_dossier_specifique(DossierMedical dossier){
+        dossier.afficher_dossier_medical();
+    }
+    
+    
+
 
 }

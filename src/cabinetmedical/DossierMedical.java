@@ -11,20 +11,19 @@ package cabinetmedical;
 public class DossierMedical{
     private int num_dossier;
     private Patients patient;
-     //besoin de la classe
+    private String traitements; 
     private String diagnostic;
-    private Prescription prescription; //besoin de la classe prescription
+    private Prescription prescription; 
 
 
     //constructeur
-    public DossierMedical(int num_dossier,Patients patient,String diagnostic,Prescription prescription){
+    public DossierMedical(int num_dossier,Patients patient,String traitements,String diagnostic,Prescription prescription){
         this.num_dossier = num_dossier;
         this.patient = patient;
-        // besoin de la classe historique_traitements
+        this.traitements = traitements;
         this.diagnostic = diagnostic;
-        this.prescription = prescription; // besoin de la classe prescription
+        this.prescription = prescription;
     }
-
     //geters
     public int get_num_dossier(){
         return num_dossier;
@@ -32,7 +31,9 @@ public class DossierMedical{
     public Patients get_patient(){
         return patient;
     }
-
+    public String get_traitements(){
+        return traitements;
+    }
     public String get_diagnostic(){
         return diagnostic;
     }
@@ -47,7 +48,9 @@ public class DossierMedical{
     public void set_patient(Patients patient) {
         this.patient = patient;
     }
-
+    public void set_traitements(String traitements) {
+        this.traitements = traitements;
+    }
     public void set_diagnostic(String diagnostic) {
         this.diagnostic = diagnostic;
     }
@@ -56,15 +59,20 @@ public class DossierMedical{
         this.prescription = prescription;  
     }
 
-    //ajouter un traitement
-
+  
+    
 
     //affichage du dossier medical
     public void afficher_dossier_medical(){
+        System.out.println("numero du dossier:"+num_dossier);
         patient.affichage_patient();
-       //on a besoin de la classe
+        System.out.println("historique des traitements:"+traitements);
         System.out.println("diagnostic:"+diagnostic);
-         //besoin de la classe
+        prescription.affichge_prescription(); 
+    }
+
+    public int getPatientNumber() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 
