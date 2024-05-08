@@ -42,7 +42,7 @@ void WriteAllData(){
         
 void SaveAllData() {
     try {
-        FileWriter fileWriter = new FileWriter("donneespatients.txt");
+        FileWriter fileWriter = new FileWriter("datapatients.txt");
         for(int i = 0; i < allPatients.size(); i++) {
             fileWriter.write(allPatients.get(i).get_nom() + ";" + allPatients.get(i).get_prenom()+ ";" + allPatients.get(i).get_age()+ ";" + allPatients.get(i).get_sexe()+ ";" + allPatients.get(i).get_groupe_sanguin() + "  " + allPatients.get(i).get_num_tel()+ ";" + allPatients.get(i).get_num_dossier() + ";" + allPatients.get(i).get_num_assurance() + "\n");
         }
@@ -53,7 +53,7 @@ void SaveAllData() {
 }
 void readAllData() {
     try {
-        File pfile = new File("donneespatients.txt");
+        File pfile = new File("datapatients.txt");
         Scanner scanner = new Scanner(pfile);
         while(scanner.hasNextLine()) {
             String data = scanner.nextLine();
