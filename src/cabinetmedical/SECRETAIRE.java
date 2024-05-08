@@ -10,10 +10,7 @@ package cabinetmedical;
  */
 public class SECRETAIRE extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
-    public SECRETAIRE() {
+ public SECRETAIRE() {
         initComponents();
     }
 
@@ -264,13 +261,13 @@ public class SECRETAIRE extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 public static void main(String args[]) {
-    // Créer une instance de SECRETAIRE en passant la liste des patients
-    java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-            new SECRETAIRE().setVisible(true);
-        }
-    });
-}
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+              
+                new SECRETAIRE().setVisible(true);
+            }
+        });
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

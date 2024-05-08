@@ -10,17 +10,14 @@ import javax.swing.JOptionPane;
  * @author anais
  */
 public class Patient extends javax.swing.JFrame {
-        private static LISTEPATIENTS listePatients;
+    private static LISTEPATIENTS listePatients;
 
     public static void setListePatients(LISTEPATIENTS listePatients) {
         Patient.listePatients = listePatients;
     }
 
-   
-        public Patient() {
-        initComponents();
-       // Initialisation à null car aucune liste de patients n'est passée
-    }
+    public Patient() {
+        initComponents();}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
