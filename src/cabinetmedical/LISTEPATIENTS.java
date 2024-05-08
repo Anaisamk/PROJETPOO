@@ -19,53 +19,46 @@ ArrayList<Patients> allPatients = new ArrayList<>();
         initComponents();
         readAllData();
         WriteAllData();
-        SaveAllData();
+   
     }
-void WriteAllData(){
-    DonnesPatients.setText(""); // Efface le contenu précédent
-    for(int i=0; i < allPatients.size(); i++) {
-        // Concatène toutes les informations du patient dans une seule chaîne de caractères
-        String patientInfo = allPatients.get(i).get_nom() + "  " +
-                             allPatients.get(i).get_prenom() + "  " +
-                             allPatients.get(i).get_age() + "  " +
-                             allPatients.get(i).get_sexe() + "  " +
-                             allPatients.get(i).get_groupe_sanguin() + "  " +
-                             allPatients.get(i).get_num_tel() + "  " +
-                             allPatients.get(i).get_num_dossier() + "  " +
-                             allPatients.get(i).get_num_assurance();
-        
-        // Ajoute les informations du patient à la zone de texte
-        DonnesPatients.append(patientInfo + "\n");
+    void SaveAllData(){
+        try{
+            FileWriter fileWriter = new FileWriter("datapatients.txt");
+            for (int i=0;i<allPatients.size();i++){
+                fileWriter.write(allPatients.get(i).get_nom()+";"+allPatients.get(i).get_prenom()+";"+allPatients.get(i).get_age()+";"+allPatients.get(i).get_sexe()+";"+allPatients.get(i).get_groupe_sanguin()+";"+allPatients.get(i).get_num_tel()+";"+allPatients.get(i).get_num_dossier()+";"+allPatients.get(i).get_num_assurance()+";");
+            }fileWriter.close();
+        }catch (Exception e){}
     }
-}
+   void WriteAllData(){
+        dp.setText("");
+        for(int i=0;i<allPatients.size();i++){
+        dp.append(allPatients.get(i).get_nom()+" "+allPatients.get(i).get_prenom()+" "+allPatients.get(i).get_age()+" "+allPatients.get(i).get_sexe()+" "+allPatients.get(i).get_groupe_sanguin()+" "+allPatients.get(i).get_num_tel()+" "+allPatients.get(i).get_num_dossier()+" "+allPatients.get(i).get_num_assurance()+" ");}
+    }
 
-        
-void SaveAllData() {
-    try {
-        FileWriter fileWriter = new FileWriter("datapatients.txt");
-        for(int i = 0; i < allPatients.size(); i++) {
-            fileWriter.write(allPatients.get(i).get_nom() + ";" + allPatients.get(i).get_prenom()+ ";" + allPatients.get(i).get_age()+ ";" + allPatients.get(i).get_sexe()+ ";" + allPatients.get(i).get_groupe_sanguin() + "  " + allPatients.get(i).get_num_tel()+ ";" + allPatients.get(i).get_num_dossier() + ";" + allPatients.get(i).get_num_assurance() + "\n");
-        }
-        fileWriter.close(); // Fermeture du FileWriter après avoir terminé l'écriture
-    } catch (Exception e) {
-         // Gestion de l'exception en cas d'erreur d'écriture
-    }
-}
-void readAllData() {
-    try {
+void readAllData(){
+    try{
         File pfile = new File("datapatients.txt");
         Scanner scanner = new Scanner(pfile);
-        while(scanner.hasNextLine()) {
+        while(scanner.hasNextLine()){
             String data = scanner.nextLine();
-            System.out.println("Ligne lue : " + data); // Débogage : affiche la ligne lue
             String[] curData = data.split(";");
-            Patients patient = new Patients(curData[0], curData[1], curData[2], curData[3], curData[4], curData[5], curData[6], curData[7]);
+            Patients patient = new Patients();
+            patient.set_nom(curData[0]);
+            patient.set_prenom(curData[1]);
+            patient.set_age(curData[2]);
+            patient.set_sexe(curData[3]);
+            patient.set_groupe_sanguin(curData[4]);
+            patient.set_num_tel(curData[5]);
+            patient.set_num_dossier(curData[6]);
+            patient.set_num_assurance(curData[7]);
             allPatients.add(patient);
+           
+            
         }
-    } catch (Exception e) {
-        
-    }
+    }catch (Exception e){}
 }
+
+
 
 
     /**
@@ -79,9 +72,9 @@ void readAllData() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        DonnesPatients = new javax.swing.JTextArea();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        dp = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,22 +101,22 @@ void readAllData() {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        DonnesPatients.setColumns(20);
-        DonnesPatients.setRows(5);
-        jScrollPane1.setViewportView(DonnesPatients);
+        dp.setColumns(20);
+        dp.setRows(5);
+        jScrollPane2.setViewportView(dp);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -131,14 +124,14 @@ void readAllData() {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -180,10 +173,10 @@ void readAllData() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea DonnesPatients;
+    private javax.swing.JTextArea dp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
