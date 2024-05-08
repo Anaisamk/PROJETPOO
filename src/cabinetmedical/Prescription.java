@@ -55,4 +55,12 @@ public class Prescription {
     public void setInstructions(String instructions) {
         this.instructions = instructions;
     }
+    
+    //affichage
+    public void affichge_prescription(){
+        System.out.println("medicament:"+medicament);
+        System.out.println("posologie:"+posologie);
+        System.out.println("type d'examen:"+typeExamen);
+        System.out.println("instructions:"+instructions);
+    }
 }
