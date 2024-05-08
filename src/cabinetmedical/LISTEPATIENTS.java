@@ -42,13 +42,13 @@ void WriteAllData(){
         
 void SaveAllData() {
     try {
-        FileWriter fileWriter = new FileWriter("donneesPatients.txt");
+        FileWriter fileWriter = new FileWriter("donneespatients.txt");
         for(int i = 0; i < allPatients.size(); i++) {
             fileWriter.write(allPatients.get(i).get_nom() + ";" + allPatients.get(i).get_prenom() + ";" + allPatients.get(i).get_age() + ";" + allPatients.get(i).get_sexe() + ";" + allPatients.get(i).get_groupe_sanguin() + "  " + allPatients.get(i).get_num_tel() + ";" + allPatients.get(i).get_num_dossier() + ";" + allPatients.get(i).get_num_assurance() + "\n");
         }
         fileWriter.close(); // Fermeture du FileWriter après avoir terminé l'écriture
     } catch (Exception e) {
-        e.printStackTrace(); // Gestion de l'exception en cas d'erreur d'écriture
+         // Gestion de l'exception en cas d'erreur d'écriture
     }
 }
 void readAllData() {
@@ -63,7 +63,7 @@ void readAllData() {
             allPatients.add(patient);
         }
     } catch (Exception e) {
-        e.printStackTrace();
+        
     }
 }
 
