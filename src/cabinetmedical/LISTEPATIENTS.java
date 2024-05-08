@@ -12,6 +12,17 @@ import java.io.FileWriter;
  */
 public class LISTEPATIENTS extends javax.swing.JFrame {
 ArrayList<Patients> allPatients = new ArrayList<>();
+   private static LISTEPATIENTS instance;
+
+    // Reste du code de la classe...
+
+    // Méthode statique pour obtenir l'instance unique de LISTEPATIENTS
+    public static LISTEPATIENTS getInstance() {
+        if (instance == null) {
+            instance = new LISTEPATIENTS();
+        }
+        return instance;
+    }
     /**
      * Creates new form LISTEPATIENTS
      */
@@ -168,12 +179,16 @@ void readAllData(){
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * @param args the command line arguments
-     */public static void main(String args[]) {
+     */
+   /* @param args the command line arguments */
+     
+public static void main(String args[]) {
     java.awt.EventQueue.invokeLater(new Runnable() {
         public void run() {
-            LISTEPATIENTS listePatients = new LISTEPATIENTS();
+            // Utilisez getInstance() pour obtenir l'instance unique de LISTEPATIENTS
+            LISTEPATIENTS listePatients = LISTEPATIENTS.getInstance();
             listePatients.setVisible(true);
+            listePatients.WriteAllData(); // Déplacer cet appel ici
         }
     });
 }

@@ -10,12 +10,16 @@ import javax.swing.JOptionPane;
  * @author anais
  */
 public class Patient extends javax.swing.JFrame {
+        private static LISTEPATIENTS listePatients;
 
-    private final LISTEPATIENTS listePatients;
+    public static void setListePatients(LISTEPATIENTS listePatients) {
+        Patient.listePatients = listePatients;
+    }
 
-    public Patient(LISTEPATIENTS listePatients) {
+   
+        public Patient() {
         initComponents();
-        this.listePatients = listePatients;
+       // Initialisation à null car aucune liste de patients n'est passée
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -348,14 +352,21 @@ Patients patient = new Patients();
     /**
      * @param args the command line arguments
      */
- public static void main(String args[]) {
+public static void main(String args[]) {
     java.awt.EventQueue.invokeLater(new Runnable() {
         public void run() {
             LISTEPATIENTS listePatients = new LISTEPATIENTS();
-            new Patient(listePatients).setVisible(true);
+          
+            
+            // Définir l'objet listePatients dans la classe Patient
+            Patient.setListePatients(listePatients);
+            
+            // Créer une instance de Patient
+            new Patient().setVisible(true);
         }
     });
 }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AGE;
