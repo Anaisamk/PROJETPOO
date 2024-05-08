@@ -54,7 +54,7 @@ void readAllData(){
             allPatients.add(patient);
            
             
-        }
+        }scanner.close();
     }catch (Exception e){}
 }
 
