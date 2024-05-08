@@ -10,7 +10,6 @@ package cabinetmedical;
  */
 public class SECRETAIRE extends javax.swing.JFrame {
 
-
     /**
      * Creates new form Login
      */
@@ -251,10 +250,10 @@ public class SECRETAIRE extends javax.swing.JFrame {
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
 
     // Créer une instance de la classe Patient en passant la liste des patients
-    Patient patientInterface = new Patient();
+    Patient patient= new Patient();
     
     // Rendre l'interface Patient visible
-    patientInterface.setVisible(true);
+    patient.setVisible(true);
     
     // Rendre l'interface SECRETAIRE invisible
     setVisible(false);

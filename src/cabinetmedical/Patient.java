@@ -356,8 +356,7 @@ public static void main(String args[]) {
     java.awt.EventQueue.invokeLater(new Runnable() {
         public void run() {
             LISTEPATIENTS listePatients = new LISTEPATIENTS();
-          
-            
+
             // Définir l'objet listePatients dans la classe Patient
             Patient.setListePatients(listePatients);
             
