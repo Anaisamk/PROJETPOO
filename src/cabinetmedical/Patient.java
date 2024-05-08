@@ -279,20 +279,18 @@ public class Patient extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         LISTEPATIENTS L = new LISTEPATIENTS();
-    String nom = NOM.getText();
-    String prenom = PRENOM.getText();
-    String age = AGE.getText();
-    String sexe = SEXE.getText();
-    String groupeSanguin = GROUPE_SANGUIN.getText();
-    String numTel = NUM_TEL.getText();
-    String numDossier = NUM_DOSSIER.getText();
-    String numAssurance = NUM_ASSURANCE.getText();
-
-    // Créer une instance de Patients avec les informations saisies
-    Patients patient = new Patients(nom, prenom, age, sexe, groupeSanguin, numTel, numDossier, numAssurance);
+Patients patient = new Patients();
+                patient.set_nom(NOM.getText());
+            patient.set_prenom(PRENOM.getText());
+            patient.set_age(AGE.getText());
+            patient.set_sexe(SEXE.getText());
+            patient.set_groupe_sanguin(GROUPE_SANGUIN.getText());
+            patient.set_num_tel(NUM_TEL.getText());
+            patient.set_num_dossier(NUM_DOSSIER.getText());
+            patient.set_num_assurance(NUM_ASSURANCE.getText());
 
     // Ajouter le patient à la liste de patients
-    L.allPatients.add(patient);
+   L.allPatients.add(patient);
 
     // Effacer les champs de saisie après l'ajout du patient
     NOM.setText("");
