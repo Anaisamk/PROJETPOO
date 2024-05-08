@@ -205,7 +205,7 @@ public class medecinInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         Interface_dossier_medical dossier = new Interface_dossier_medical();
         this.setVisible(false);
-        dossier.setVisible(false);
+        dossier.setVisible(true);
     }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
