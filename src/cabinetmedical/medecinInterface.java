@@ -206,7 +206,7 @@ public class medecinInterface extends javax.swing.JFrame {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
-        Interface_dossier_medical dossier = new Interface_dossier_medical();
+        dossiers_medicaux dossier = new dossiers_medicaux();
         this.setVisible(false);
         dossier.setVisible(true);
     }//GEN-LAST:event_jLabel8MouseClicked

@@ -10,13 +10,21 @@ package cabinetmedical;
  */
 public class DossierMedical{
     private int num_dossier;
-    private Patients patient;
+    public Patients patient;
     private String traitements; 
     private String diagnostic;
-    private Prescription prescription; 
+    public Prescription prescription; 
 
 
     //constructeur
+    
+    public DossierMedical(){
+        num_dossier = 0;
+        patient = null;
+        traitements ="";
+        diagnostic = "";
+        prescription = null;
+    }
     public DossierMedical(int num_dossier,Patients patient,String traitements,String diagnostic,Prescription prescription){
         this.num_dossier = num_dossier;
         this.patient = patient;

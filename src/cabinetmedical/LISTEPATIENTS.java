@@ -49,7 +49,6 @@ void WriteAllData() {
         Patients patient = allPatients.get(i);
         dp.append("╔════════════════════════════════════════╗\n");
         dp.append("║ Nom: " + patient.get_nom() + "\n");
-        dp.append("║ Prénom: " + patient.get_prenom() + "\n");
         dp.append("║ Age: " + patient.get_age() + "\n");
         dp.append("║ Sexe: " + patient.get_sexe() + "\n");
         dp.append("║ Groupe Sanguin: " + patient.get_groupe_sanguin() + "\n");
