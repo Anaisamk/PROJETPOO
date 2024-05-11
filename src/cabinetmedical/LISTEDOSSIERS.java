@@ -45,7 +45,7 @@ void SaveAllData(){
 void WriteAllData() {
     dp.setText(""); // Efface le contenu actuel de la zone de texte
 
-    // Parcourt tous les patients et les affiche avec une mise en forme adaptée
+    // Parcourt tous les dossiers et les affiche avec une mise en forme adaptée
     for (int i = 0; i < dossiers.size(); i++) {
         DossierMedical d = dossiers.get(i);
         dp.append("╔════════════════════════════════════════╗\n");
@@ -86,9 +86,10 @@ void readAllData(){
         e.printStackTrace();
     }
 }
+//ajouter un nouveau dossier
    public void adddossier(DossierMedical d) {
         dossiers.add(d);
-        // Mettre à jour l'affichage de la liste des patients
+        // Mettre à jour l'affichage de la liste des dossiers
         WriteAllData();
         SaveAllData();
     }

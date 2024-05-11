@@ -4,6 +4,8 @@
  */
 package cabinetmedical;
 
+import cabinetmedical.LISTEDOSSIERS;
+
 /**
  *
  * @author anis
@@ -19,6 +21,9 @@ public class dossiers_medicaux extends javax.swing.JFrame {
     }
     public dossiers_medicaux() {
         initComponents();
+        if (listedossiers == null) {
+  listedossiers = new LISTEDOSSIERS();
+}
     }
 
     /**
@@ -422,10 +427,12 @@ Patients p = new Patients(patient.getText(),"","","","","","","");
             java.util.logging.Logger.getLogger(dossiers_medicaux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+    
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            private static LISTEDOSSIERS listedossiers;
             public void run() {
+                
                 dossiers_medicaux.setListeDossiers(listedossiers);
                 new dossiers_medicaux().setVisible(true);
             }
