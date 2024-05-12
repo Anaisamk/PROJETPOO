@@ -8,7 +8,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 /**
  *
  * @author anis
@@ -32,46 +33,53 @@ public class LISTEDOSSIERS extends javax.swing.JFrame {
         readAllData();
         WriteAllData();
     }
-void SaveAllData(){
-        try{
-            FileWriter fileWriter = new FileWriter("datadossier.txt");
-            for (int i=0;i<dossiers.size();i++){
-                fileWriter.write(dossiers.get(i).get_num_dossier()+";"+dossiers.get(i).patient.get_nom()+";"+dossiers.get(i).get_traitements()+";"+dossiers.get(i).get_traitements()+";"+dossiers.get(i).get_diagnostic()+";"+dossiers.get(i).prescription.getMedicament()+";"+dossiers.get(i).prescription.getPosologie()+";"+dossiers.get(i).prescription.getTypeExamen()+";"+dossiers.get(i).prescription.getInstructions()+"\n");
-
-            }fileWriter.close();
-        }catch (Exception e){}
+ 
+void SaveAllData() {
+    try {
+      FileWriter fileWriter = new FileWriter("src/cabinetmedical/dossiers.txt");
+      for (int i = 0; i < dossiers.size(); i++) {
         
-}
+        fileWriter.write(dossiers.get(i).get_num_dossier() + ";" + dossiers.get(i).patient.get_nom() +  ";" + dossiers.get(i).get_traitements() + ";" + dossiers.get(i).get_diagnostic() + ";" + dossiers.get(i).prescription.getMedicament() + ";" + dossiers.get(i).prescription.getPosologie() + ";" + dossiers.get(i).prescription.getTypeExamen() + ";" + dossiers.get(i).prescription.getInstructions() + "\n");
+      }
+      fileWriter.close();
+    } catch (Exception e) {
+      // Handle the exception
+      System.err.println("Error saving data to file: " + e.getMessage());
+      // You can also add a message dialog to inform the user about the error
+    }
+  }
 void WriteAllData() {
-    dp.setText(""); // Efface le contenu actuel de la zone de texte
+    dpd.setText(""); // Efface le contenu actuel de la zone de texte
 
     // Parcourt tous les dossiers et les affiche avec une mise en forme adaptée
     for (int i = 0; i < dossiers.size(); i++) {
         DossierMedical d = dossiers.get(i);
-        dp.append("╔════════════════════════════════════════╗\n");
-        dp.append("║ NUMERO DU DOSSIER: " + d.get_num_dossier() + "\n");
-        dp.append("║ PATIENT: " + d.patient.get_nom() + d.patient.get_prenom()+"\n");
-        dp.append("║ TRAITEMENTS: " + d.get_traitements() + "\n");
-        dp.append("║ DIAGNOSTIC: " + d.get_diagnostic() + "\n");
-        dp.append("║ PRESCRIPTION:MEDICAMENT. " + d.prescription.getMedicament() + "\n");
-        dp.append("║ POSOLOGIE: " + d.prescription.getPosologie() + "\n");
-        dp.append("║ TYPE D'EXAMEN: " + d.prescription.getTypeExamen() + "\n");
-        dp.append("║ INSTRUCTIONS: " + d.prescription.getInstructions() + "\n");
-        dp.append("╚════════════════════════════════════════╝\n\n");
+        dpd.append("╔════════════════════════════════════════╗\n");
+        dpd.append("║ NUMERO DU DOSSIER: " + d.get_num_dossier() + "\n");
+        dpd.append("║ PATIENT: " + d.patient.get_nom() + d.patient.get_prenom()+"\n");
+        dpd.append("║ TRAITEMENTS: " + d.get_traitements() + "\n");
+        dpd.append("║ DIAGNOSTIC: " + d.get_diagnostic() + "\n");
+        dpd.append("║ PRESCRIPTION:MEDICAMENT. " + d.prescription.getMedicament() + "\n");
+        dpd.append("║ POSOLOGIE: " + d.prescription.getPosologie() + "\n");
+        dpd.append("║ TYPE D'EXAMEN: " + d.prescription.getTypeExamen() + "\n");
+        dpd.append("║ INSTRUCTIONS: " + d.prescription.getInstructions() + "\n");
+        dpd.append("╚════════════════════════════════════════╝\n\n");
     }
 }
 void readAllData(){
     try{
-        File pfile = new File("datadossier.txt");
+        File pfile = new File("src/cabinetmedical/dossiers.txt");
         Scanner scanner = new Scanner(pfile);
         while(scanner.hasNextLine()){
             String data = scanner.nextLine();
             String[] curData = data.split(";");
             DossierMedical d = new DossierMedical();
             d.set_num_dossier(Integer.parseInt(curData[0]));
+            d.patient = new Patients();
             d.patient.set_nom(curData[1]);
             d.set_traitements(curData[2]);
             d.set_diagnostic(curData[3]);
+            d.prescription = new Prescription("","","",""); 
             d.prescription.setMedicament(curData[4]);
             d.prescription.setPosologie(curData[5]);
             d.prescription.setTypeExamen(curData[6]);
@@ -80,12 +88,13 @@ void readAllData(){
         }
         scanner.close();
         
-        // Après avoir lu les données, mettez à jour l'affichage
+        // After reading the data, update the display
         WriteAllData();
     } catch (Exception e) {
         e.printStackTrace();
     }
 }
+
 //ajouter un nouveau dossier
    public void adddossier(DossierMedical d) {
         dossiers.add(d);
@@ -105,7 +114,7 @@ void readAllData(){
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        dp = new javax.swing.JTextArea();
+        dpd = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -113,13 +122,13 @@ void readAllData(){
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(67, 142, 242));
 
-        dp.setColumns(20);
-        dp.setRows(5);
-        jScrollPane2.setViewportView(dp);
+        dpd.setColumns(20);
+        dpd.setRows(5);
+        jScrollPane2.setViewportView(dpd);
 
-        jPanel3.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel3.setBackground(new java.awt.Color(4, 85, 191));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -130,16 +139,16 @@ void readAllData(){
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(251, 251, 251)
+                .addGap(247, 247, 247)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -214,17 +223,15 @@ void readAllData(){
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                LISTEDOSSIERS listedossiers = LISTEDOSSIERS.getInstance();
-                listedossiers.setVisible(true);
-                listedossiers.WriteAllData(); 
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            LISTEDOSSIERS listedossiers = LISTEDOSSIERS.getInstance();
+            listedossiers.setVisible(true);
+            listedossiers.WriteAllData();
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea dp;
+    private javax.swing.JTextArea dpd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

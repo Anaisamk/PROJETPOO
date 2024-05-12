@@ -4,7 +4,8 @@
  */
 package cabinetmedical;
 
-import cabinetmedical.LISTEDOSSIERS;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,7 +41,8 @@ public class dossiers_medicaux extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        liste_dossier = new javax.swing.JButton();
+        recherche_dossier = new javax.swing.JButton();
         num_dossier = new java.awt.TextField();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -65,7 +67,7 @@ public class dossiers_medicaux extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(4, 85, 191));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cabinetmedical/dossier.png"))); // NOI18N
 
@@ -73,10 +75,21 @@ public class dossiers_medicaux extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Dossier medical");
 
-        jButton2.setText("liste de dossiers");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        liste_dossier.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        liste_dossier.setForeground(new java.awt.Color(0, 153, 255));
+        liste_dossier.setText("liste de dossiers");
+        liste_dossier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                liste_dossierActionPerformed(evt);
+            }
+        });
+
+        recherche_dossier.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        recherche_dossier.setForeground(new java.awt.Color(0, 153, 255));
+        recherche_dossier.setText("recherche dossier");
+        recherche_dossier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recherche_dossierActionPerformed(evt);
             }
         });
 
@@ -96,20 +109,24 @@ public class dossiers_medicaux extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(305, 305, 305))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(liste_dossier, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(recherche_dossier, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton2))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(liste_dossier, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(recherche_dossier, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addContainerGap())
@@ -261,7 +278,7 @@ public class dossiers_medicaux extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(214, 214, 214)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(487, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +320,7 @@ public class dossiers_medicaux extends javax.swing.JFrame {
                                         .addComponent(type_examen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(instruction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
@@ -350,10 +367,10 @@ Patients p = new Patients(patient.getText(),"","","","","","","");
             dossier.set_prescription(prescription);
             
 
-    // Ajouter le patient à la liste de patients de LISTEPATIENTS
+    // Ajouter le dossier à la liste de dossiers de LISTEDOSSIERS
     listedossiers.adddossier(dossier);
 
-    // Effacer les champs de saisie après l'ajout du patient
+    // Effacer les champs de saisie après l'ajout du dossier
     num_dossier.setText("");
     patient.setText("");
     traitements.setText("");
@@ -392,14 +409,53 @@ Patients p = new Patients(patient.getText(),"","","","","","","");
         // TODO add your handling code here:
     }//GEN-LAST:event_posologieActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void recherche_dossierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recherche_dossierActionPerformed
         // TODO add your handling code here:
-        // Rendre la fenêtre actuelle invisible
-    setVisible(false);
+                                      
+    // Demander le num du dossier à rechercher
+     //int nomRecherche = JOptionPane.showInputDialog(this, "Entrez le numero du dossier à rechercher :", "Rechercher un dossier", JOptionPane.QUESTION_MESSAGE);
+     int nomRecherche;
     
-    // Rendre la fenêtre de la liste des patients visible
+  String inputString = JOptionPane.showInputDialog(this, "Entrez le numero du dossier à rechercher :", "Rechercher un dossier", JOptionPane.QUESTION_MESSAGE);
+  
+    nomRecherche = Integer.parseInt(inputString); // Convert String to int
+ 
+ 
+    // Vérifier si un nom a été saisi
+    if (inputString != null && !inputString.isEmpty()) {
+        // Parcourir la liste des dossiers pour trouver celui correspondant au nom saisi
+        boolean dossierTrouve = false;
+        for (int i = 0; i < listedossiers.dossiers.size(); i++) {
+            DossierMedical d = listedossiers.dossiers.get(i);
+            if (d.get_num_dossier() == nomRecherche) {
+                // Afficher les informations du patient
+                JOptionPane.showMessageDialog(this, "Numero du dossier: " + d.get_num_dossier() + "\nnom: " + d.patient.get_nom() + "\ntraitement: " + d.get_traitements() + "\ndiagnostic: " + d.get_diagnostic() + "\nmedicament: " + d.prescription.getMedicament()+ "\nposologie: " + d.prescription.getPosologie() + "\ntype d'examen: " + d.prescription.getTypeExamen() + "\ninstructions: " + d.prescription.getInstructions(), "Informations du dossier", JOptionPane.INFORMATION_MESSAGE);
+                dossierTrouve = true;
+                break;
+            }
+        }
+
+        // Si aucun patient correspondant n'a été trouvé, afficher un message
+        if (!dossierTrouve) {
+            JOptionPane.showMessageDialog(this, "Aucun dossier trouvé " + nomRecherche, "dossier non trouvé", JOptionPane.WARNING_MESSAGE);
+        }
+    } else {
+        // Si aucun nom n'a été saisi, afficher un message
+        JOptionPane.showMessageDialog(this, "Veuillez saisir un numero du dossier à rechercher", "Numero manquant", JOptionPane.WARNING_MESSAGE);
+    }
+
+    
+    }//GEN-LAST:event_recherche_dossierActionPerformed
+
+    private void liste_dossierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_liste_dossierActionPerformed
+        // TODO add your handling code here:
+            // Rendre la fenêtre actuelle invisible
+    
+    
+    // Rendre la fenêtre de la liste des dossiers visible
     listedossiers.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_liste_dossierActionPerformed
 
     /**
      * @param args the command line arguments
@@ -432,7 +488,7 @@ Patients p = new Patients(patient.getText(),"","","","","","","");
         java.awt.EventQueue.invokeLater(new Runnable() {
             private static LISTEDOSSIERS listedossiers;
             public void run() {
-                
+                LISTEDOSSIERS listedossiers = new LISTEDOSSIERS();
                 dossiers_medicaux.setListeDossiers(listedossiers);
                 new dossiers_medicaux().setVisible(true);
             }
@@ -444,7 +500,6 @@ Patients p = new Patients(patient.getText(),"","","","","","","");
     private java.awt.TextField instruction;
     private javax.swing.JLabel instructions;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -459,10 +514,12 @@ Patients p = new Patients(patient.getText(),"","","","","","","");
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton liste_dossier;
     private java.awt.TextField medicament;
     private java.awt.TextField num_dossier;
     private java.awt.TextField patient;
     private java.awt.TextField posologie;
+    private javax.swing.JButton recherche_dossier;
     private java.awt.TextField traitements;
     private java.awt.TextField type_examen;
     // End of variables declaration//GEN-END:variables
