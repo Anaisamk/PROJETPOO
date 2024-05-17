@@ -17,7 +17,12 @@ public class Patient extends javax.swing.JFrame {
     }
 
     public Patient() {
-        initComponents();}
+         
+        initComponents();
+        if (listePatients == null) {
+  listePatients = new LISTEPATIENTS();
+}}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,7 +36,7 @@ public class Patient extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        afficherListe = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         NOM = new javax.swing.JTextField();
         PRENOM = new javax.swing.JTextField();
@@ -61,10 +66,10 @@ public class Patient extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("PATIENTS");
 
-        jButton1.setText("LISTE PATIENTS");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        afficherListe.setText("LISTE PATIENTS");
+        afficherListe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                afficherListeActionPerformed(evt);
             }
         });
 
@@ -83,7 +88,7 @@ public class Patient extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1)
                 .addGap(85, 85, 85)
-                .addComponent(jButton1)
+                .addComponent(afficherListe)
                 .addGap(38, 38, 38)
                 .addComponent(jButton2)
                 .addContainerGap(68, Short.MAX_VALUE))
@@ -93,7 +98,7 @@ public class Patient extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(afficherListe)
                     .addComponent(jButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -248,17 +253,17 @@ public class Patient extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void afficherListeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficherListeActionPerformed
         // TODO add your handling code here:                                       
     
     // Rendre la fenêtre actuelle invisible
-    setVisible(false);
+
     
     // Rendre la fenêtre de la liste des patients visible
     listePatients.setVisible(true);
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_afficherListeActionPerformed
 
     private void PRENOMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PRENOMActionPerformed
         // TODO add your handling code here:
@@ -373,7 +378,7 @@ public static void main(String args[]) {
     private javax.swing.JTextField NUM_TEL;
     private javax.swing.JTextField PRENOM;
     private javax.swing.JTextField SEXE;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton afficherListe;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
