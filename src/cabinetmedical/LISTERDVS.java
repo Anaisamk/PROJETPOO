@@ -31,7 +31,7 @@ public class LISTERDVS extends javax.swing.JFrame {
     
 void SaveAllData() {
     try {
-        FileWriter fileWriter = new FileWriter("/src/cabinetmedical/datardvs.txt", true); // true pour permettre l'ajout à la fin du fichier
+        FileWriter fileWriter = new FileWriter("datardvs.txt", true); // true pour permettre l'ajout à la fin du fichier
         for (int i = 0; i < gestionRdv.ListeRdv.size(); i++) {
             RendezVous rdv = gestionRdv.ListeRdv.get(i);
             // Récupérer le nom complet du patient
@@ -71,7 +71,7 @@ void WriteAllData() {
     
 void readAllData() {
     try {
-        File file = new File("/src/cabinetmedical/datardvs.txt");
+        File file = new File("datardvs.txt");
         Scanner scanner = new Scanner(file);
         while (scanner.hasNextLine()) {
             String data = scanner.nextLine();
