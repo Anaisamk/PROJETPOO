@@ -8,6 +8,7 @@ import static java.lang.Float.parseFloat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,8 +44,8 @@ private static HISTORIQUEFACTURES historiquefactures;
         jLabel2 = new javax.swing.JLabel();
         affichage = new javax.swing.JButton();
         payer = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         nom = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         prenom = new javax.swing.JTextField();
         num_dossier = new javax.swing.JTextField();
         montant = new javax.swing.JTextField();
@@ -118,16 +119,15 @@ private static HISTORIQUEFACTURES historiquefactures;
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(202, 202, 202)
-                        .addComponent(payer)
-                        .addGap(18, 18, 18)
-                        .addComponent(affichage)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel2)
+                .addGap(121, 121, 121)
+                .addComponent(payer)
+                .addGap(18, 18, 18)
+                .addComponent(affichage)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,19 +136,19 @@ private static HISTORIQUEFACTURES historiquefactures;
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(payer)
                     .addComponent(affichage))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jLabel2))
+                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(52, 52, 52))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
         nom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomActionPerformed(evt);
-            }
-        });
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
             }
         });
 
@@ -198,7 +198,6 @@ private static HISTORIQUEFACTURES historiquefactures;
 
         ajout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ajout.setForeground(new java.awt.Color(0, 153, 255));
-        ajout.setActionCommand("");
         ajout.setLabel("ajouter une nouvelle facture");
         ajout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,35 +222,29 @@ private static HISTORIQUEFACTURES historiquefactures;
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(prenom, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(num_dossier, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(montant, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(prenom, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(ajout)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(num_dossier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -265,7 +258,7 @@ private static HISTORIQUEFACTURES historiquefactures;
                     .addComponent(jLabel7))
                 .addGap(30, 30, 30)
                 .addComponent(ajout)
-                .addGap(0, 50, Short.MAX_VALUE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -285,10 +278,6 @@ private static HISTORIQUEFACTURES historiquefactures;
     private void nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void prenomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prenomActionPerformed
         // TODO add your handling code here:
@@ -357,6 +346,40 @@ private static HISTORIQUEFACTURES historiquefactures;
 
     private void payerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payerActionPerformed
         // TODO add your handling code here:
+                                          
+    // Demander le num du dossier à rechercher
+     //int nomRecherche = JOptionPane.showInputDialog(this, "Entrez le numero du dossier à rechercher :", "Rechercher un dossier", JOptionPane.QUESTION_MESSAGE);
+     int nomRecherche;
+    
+  String inputString = JOptionPane.showInputDialog(this, "Entrez le numero du dossier de votre patient :", "afficher le montant a payer", JOptionPane.QUESTION_MESSAGE);
+  
+    nomRecherche = Integer.parseInt(inputString); // Convert String to int
+ 
+ 
+    // Vérifier si un num a été saisi
+    if (inputString != null && !inputString.isEmpty()) {
+        // Parcourir la liste des dossiers pour trouver celui correspondant au nom saisi
+        boolean factureTrouve = false;
+        for (int i = 0; i < historiquefactures.factures.size(); i++) {
+            Facture f = historiquefactures.factures.get(i);
+            if (Integer.parseInt(f.getPatient().get_num_dossier()) == nomRecherche) {
+                // Afficher les informations du patient
+                JOptionPane.showMessageDialog(this,  f.getMontant(), "Montant a payer", JOptionPane.INFORMATION_MESSAGE);
+                factureTrouve = true;
+                break;
+            }
+        }
+
+        // Si aucun patient correspondant n'a été trouvé, afficher un message
+        if (!factureTrouve) {
+            JOptionPane.showMessageDialog(this, "Aucun dossier trouvé " + nomRecherche, "dossier non trouvé", JOptionPane.WARNING_MESSAGE);
+        }
+    } else {
+        // Si aucun nom n'a été saisi, afficher un message
+        JOptionPane.showMessageDialog(this, "Veuillez saisir un numero du dossier à rechercher", "Numero manquant", JOptionPane.WARNING_MESSAGE);
+    }
+
+    
     }//GEN-LAST:event_payerActionPerformed
 
     /**
@@ -401,6 +424,7 @@ private static HISTORIQUEFACTURES historiquefactures;
     private javax.swing.JButton affichage;
     private javax.swing.JButton ajout;
     private javax.swing.JTextField date;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -411,7 +435,6 @@ private static HISTORIQUEFACTURES historiquefactures;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField montant;
     private javax.swing.JTextField nom;
