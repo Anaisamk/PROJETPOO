@@ -19,7 +19,7 @@ public class GestionRdv {
     private static final LocalTime Ouverture = LocalTime.of(9, 0); // Heure d'ouverture du cabinet
     private static final LocalTime Fermeture = LocalTime.of(16, 0); // Heure de fermeture du cabinet
     private static final int Duree = 30; // rdv dure 30mins
-    private List<RendezVous> ListeRdv;
+    public List<RendezVous> ListeRdv;
     public GestionRdv() {
         ListeRdv = new ArrayList<>();
     }
@@ -55,7 +55,7 @@ public class GestionRdv {
             return false;
         }
         // Ajouter le rendez-vous
-        ListeRdv.add(new RendezVous(date, heure, patient, "Planifié"));
+        ListeRdv.add(new RendezVous(date, heure, patient));
         System.out.println("Rendez-vous planifié avec succès pour " + date + " à " + heure);
         return true;
     }

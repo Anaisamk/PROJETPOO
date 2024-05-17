@@ -11,17 +11,24 @@ package cabinetmedical;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+
 public class RendezVous {
     private LocalDate date;
     private LocalTime heure;
     private Patients patient;
-    private String etat;
-    
-    public RendezVous(LocalDate date, LocalTime heure, Patients patient, String etat) {
+   
+    public RendezVous() {
+    // Initialise la date et l'heure avec des valeurs par défaut
+    this.date = LocalDate.now();
+    this.heure = LocalTime.now();
+    this.patient = null; // Initialise le patient à null
+}
+
+    public RendezVous(LocalDate date, LocalTime heure, Patients patient) {
         this.date = date;
         this.heure = heure;
         this.patient = patient;
-        this.etat = etat;
+        
     } 
     public LocalDate getDate() {
         return this.date;
@@ -32,9 +39,7 @@ public class RendezVous {
     public Patients getPatient() {
         return this.patient;
     }
-    public String getEtat() {
-        return this.etat;
-    }
+
     public void setDate(LocalDate date) {
         this.date = date;
     }
@@ -44,7 +49,5 @@ public class RendezVous {
     public void setPatient(Patients patient) {
         this.patient = patient;
     }
-    public void setEtat(String etat) {
-        this.etat = etat;
-    }
+
 }

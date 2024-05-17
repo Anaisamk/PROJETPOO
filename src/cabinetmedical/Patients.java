@@ -22,6 +22,10 @@ public class Patients {
 
     private String num_dossier;
     private String num_assurance;
+    public Patients (String nom,String prenom){
+        this.nom=nom;
+        this.prenom=prenom;
+    }
 
 public Patients(){
 this.nom="";
