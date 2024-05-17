@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author anis
  */
 public class InterfaceFacture extends javax.swing.JFrame {
-private static HISTORIQUEFACTURES historiquefactures;
+static HISTORIQUEFACTURES historiquefactures;
  
     public static void setHistoriqueFactures(HISTORIQUEFACTURES historiquefactures) {
         InterfaceFacture.historiquefactures = historiquefactures;
