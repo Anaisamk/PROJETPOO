@@ -8,6 +8,7 @@ import static java.lang.Float.parseFloat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +26,12 @@ static HISTORIQUEFACTURES historiquefactures;
      */
     public InterfaceFacture() {
         initComponents();
+        String classPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+    String imagePath = classPath + "image.png"; // Adjust "image.png" to your actual image file name
+    
+    // Load the image using ImageIcon
+    ImageIcon icon;
+    icon = new ImageIcon(imagePath);
     }
 
     /**

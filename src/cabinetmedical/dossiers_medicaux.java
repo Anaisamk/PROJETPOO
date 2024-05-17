@@ -5,6 +5,7 @@
 package cabinetmedical;
 
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +25,12 @@ public class dossiers_medicaux extends javax.swing.JFrame {
         initComponents();
         if (listedossiers == null) {
   listedossiers = new LISTEDOSSIERS();
+  String classPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+    String imagePath = classPath + "image.png"; // Adjust "image.png" to your actual image file name
+    
+    // Load the image using ImageIcon
+    ImageIcon icon;
+    icon = new ImageIcon(imagePath);
 }
     }
 

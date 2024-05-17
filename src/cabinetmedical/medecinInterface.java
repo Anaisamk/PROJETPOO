@@ -4,6 +4,8 @@
  */
 package cabinetmedical;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author anais
@@ -15,6 +17,12 @@ public class medecinInterface extends javax.swing.JFrame {
      */
     public medecinInterface() {
         initComponents();
+        String classPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+    String imagePath = classPath + "image.png"; // Adjust "image.png" to your actual image file name
+    
+    // Load the image using ImageIcon
+    ImageIcon icon;
+    icon = new ImageIcon(imagePath);
     }
 
     /**

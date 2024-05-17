@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cabinetmedical;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +18,13 @@ String userPasss="1234";
      */
     public login() {
         initComponents();
+        // Get the directory path of the current class file
+    String classPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+    String imagePath = classPath + "image.png"; // Adjust "image.png" to your actual image file name
+    
+    // Load the image using ImageIcon
+    ImageIcon icon;
+    icon = new ImageIcon(imagePath);
     }
 
     /**
