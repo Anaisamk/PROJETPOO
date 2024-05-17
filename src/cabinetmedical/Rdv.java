@@ -39,8 +39,8 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Listerdvs = new javax.swing.JButton();
-        rdvtoday = new javax.swing.JButton();
         recherche = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         ajouterrdv = new javax.swing.JButton();
@@ -59,18 +59,11 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("RendezVous");
 
-        Listerdvs.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Listerdvs.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Listerdvs.setText("Liste des rdv");
         Listerdvs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ListerdvsActionPerformed(evt);
-            }
-        });
-
-        rdvtoday.setText("rdv de la journee");
-        rdvtoday.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdvtodayActionPerformed(evt);
             }
         });
 
@@ -81,31 +74,38 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
             }
         });
 
+        jButton1.setText("SUPPRIMER RDV");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(49, 49, 49)
                 .addComponent(Listerdvs)
-                .addGap(41, 41, 41)
-                .addComponent(rdvtoday)
-                .addGap(33, 33, 33)
+                .addGap(51, 51, 51)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(recherche)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(jButton1)
                     .addComponent(Listerdvs)
-                    .addComponent(rdvtoday)
-                    .addComponent(recherche))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(recherche)
+                    .addComponent(jLabel1))
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -155,29 +155,22 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ajouterrdv)
-                        .addContainerGap())
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(PATIENT, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(530, 530, 530))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGap(86, 86, 86)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(HEURE, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(491, Short.MAX_VALUE))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(DATE, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(491, Short.MAX_VALUE)))))))
+                        .addGap(160, 160, 160)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(DATE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                            .addComponent(PATIENT, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(HEURE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addComponent(ajouterrdv)))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,16 +180,16 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
                     .addComponent(PATIENT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(53, 53, 53)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(DATE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DATE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(57, 57, 57)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(HEURE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addGap(60, 60, 60)
                 .addComponent(ajouterrdv)
-                .addGap(45, 45, 45))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,7 +198,7 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,8 +207,7 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -238,24 +230,27 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
   
     }//GEN-LAST:event_PATIENTActionPerformed
 
-    private void rdvtodayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdvtodayActionPerformed
-        
-       gestionRdv.afficherRendezVousDateActuelle();
-    }//GEN-LAST:event_rdvtodayActionPerformed
-
     private void rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercheActionPerformed
      // TODO add your handling code here:                                       
+                                         
     // Demandez à l'utilisateur de saisir le nom du patient à rechercher
     String nomPatient = JOptionPane.showInputDialog("Entrez le nom du patient :");
 
     // Vérifiez si le nom du patient est saisi
     if (nomPatient != null && !nomPatient.isEmpty()) {
         // Effectuez la recherche en utilisant le nom du patient saisi
-        gestionRdv.rechercherRdvParNom(nomPatient);
+        String rdvInfo = gestionRdv.rechercherRdvParNom(nomPatient);
+        if (!rdvInfo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, rdvInfo, "Rendez-vous pour " + nomPatient, JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Aucun rendez-vous trouvé pour le patient " + nomPatient + ".", "Rendez-vous pour " + nomPatient, JOptionPane.INFORMATION_MESSAGE);
+        }
     } else {
         // Affichez un message d'erreur si aucun nom n'est saisi
         JOptionPane.showMessageDialog(this, "Veuillez entrer un nom de patient.");
     }
+
+
 
 
     }//GEN-LAST:event_rechercheActionPerformed
@@ -338,6 +333,32 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
 
 
     }//GEN-LAST:event_ajouterrdvActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+    // Demandez à l'utilisateur de saisir le nom du patient à supprimer
+    String nomPatient = JOptionPane.showInputDialog("Entrez le nom du patient :");
+
+    // Vérifiez si le nom du patient est saisi
+    if (nomPatient != null && !nomPatient.isEmpty()) {
+        // Appelez la méthode supprimerRendezVousParNom de GestionRdv pour supprimer le rendez-vous par nom de patient
+        boolean success = gestionRdv.supprimerRendezVousParNom(nomPatient);
+
+        // Si le rendez-vous est supprimé avec succès, rafraîchissez l'affichage
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Rendez-vous supprimé avec succès pour le patient " + nomPatient);
+            listeRdv.WriteAllData();
+            listeRdv.SaveAllData();// Rafraîchissez l'affichage de la liste des rendez-vous
+        } else {
+            JOptionPane.showMessageDialog(this, "Aucun rendez-vous trouvé pour le patient " + nomPatient);
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Veuillez entrer un nom de patient.");
+    }
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 private void refreshRdvList() {
     // Rafraîchir l'affichage de la liste des rendez-vous dans Rdv
     gestionRdv.afficherRdvChronologique();
@@ -374,6 +395,7 @@ public static void main(String args[]) {
     private javax.swing.JButton Listerdvs;
     private javax.swing.JTextField PATIENT;
     private javax.swing.JButton ajouterrdv;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -381,7 +403,6 @@ public static void main(String args[]) {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton rdvtoday;
     private javax.swing.JButton recherche;
     // End of variables declaration//GEN-END:variables
 }

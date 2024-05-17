@@ -260,10 +260,10 @@ public class SECRETAIRE extends javax.swing.JFrame {
     Patient patient= new Patient();
     
     // Rendre l'interface Patient visible
-    patient.setVisible(true);
+    this.setVisible(false);
     
     // Rendre l'interface SECRETAIRE invisible
-    setVisible(false);
+    patient.setVisible(true);
  // TODO add your handling code here:
     }//GEN-LAST:event_jLabel9MouseClicked
 

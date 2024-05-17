@@ -17,7 +17,12 @@ public class Patient extends javax.swing.JFrame {
     }
 
     public Patient() {
-        initComponents();}
+         
+        initComponents();
+        if (listePatients == null) {
+  listePatients = new LISTEPATIENTS();
+}}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,8 +36,9 @@ public class Patient extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        afficherListe = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         NOM = new javax.swing.JTextField();
         PRENOM = new javax.swing.JTextField();
         AGE = new javax.swing.JTextField();
@@ -61,10 +67,10 @@ public class Patient extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("PATIENTS");
 
-        jButton1.setText("LISTE PATIENTS");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        afficherListe.setText("LISTE PATIENTS");
+        afficherListe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                afficherListeActionPerformed(evt);
             }
         });
 
@@ -75,31 +81,38 @@ public class Patient extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("SUPPRIMER");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(85, 85, 85)
+                .addGap(27, 27, 27)
+                .addComponent(afficherListe)
+                .addGap(27, 27, 27)
                 .addComponent(jButton1)
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(26, 26, 26))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(afficherListe)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addGap(25, 25, 25))
         );
 
         PRENOM.addActionListener(new java.awt.event.ActionListener() {
@@ -248,17 +261,17 @@ public class Patient extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void afficherListeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficherListeActionPerformed
         // TODO add your handling code here:                                       
     
     // Rendre la fenêtre actuelle invisible
-    setVisible(false);
+
     
     // Rendre la fenêtre de la liste des patients visible
     listePatients.setVisible(true);
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_afficherListeActionPerformed
 
     private void PRENOMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PRENOMActionPerformed
         // TODO add your handling code here:
@@ -346,6 +359,41 @@ Patients patient = new Patients();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    // Demander à l'utilisateur de saisir le nom du patient à supprimer
+    String nomSuppression = JOptionPane.showInputDialog(this, "Entrez le nom du patient à supprimer :", "Supprimer un patient", JOptionPane.QUESTION_MESSAGE);
+
+    // Vérifier si un nom a été saisi
+    if (nomSuppression != null && !nomSuppression.isEmpty()) {
+        // Parcourir la liste des patients pour trouver celui correspondant au nom saisi
+        boolean patientTrouve = false;
+        for (int i = 0; i < listePatients.allPatients.size(); i++) {
+            Patients patient = listePatients.allPatients.get(i);
+            if (patient.get_nom().equalsIgnoreCase(nomSuppression)) {
+                // Supprimer le patient de la liste des patients
+                listePatients.allPatients.remove(i);
+                patientTrouve = true;
+                // Mettre à jour l'affichage de la liste des patients
+                listePatients.WriteAllData();
+                listePatients.SaveAllData();
+                JOptionPane.showMessageDialog(this, "Le patient a été supprimé avec succès.", "Suppression réussie", JOptionPane.INFORMATION_MESSAGE);
+                break;
+            }
+        }
+
+        // Si aucun patient correspondant n'a été trouvé, afficher un message
+        if (!patientTrouve) {
+            JOptionPane.showMessageDialog(this, "Aucun patient trouvé avec le nom " + nomSuppression, "Patient non trouvé", JOptionPane.WARNING_MESSAGE);
+        }
+    } else {
+        // Si aucun nom n'a été saisi, afficher un message
+        JOptionPane.showMessageDialog(this, "Veuillez saisir le nom du patient à supprimer.", "Nom manquant", JOptionPane.WARNING_MESSAGE);
+    }
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,6 +421,7 @@ public static void main(String args[]) {
     private javax.swing.JTextField NUM_TEL;
     private javax.swing.JTextField PRENOM;
     private javax.swing.JTextField SEXE;
+    private javax.swing.JButton afficherListe;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

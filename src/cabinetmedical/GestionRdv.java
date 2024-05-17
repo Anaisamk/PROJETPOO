@@ -59,25 +59,33 @@ public class GestionRdv {
         System.out.println("Rendez-vous planifié avec succès pour " + date + " à " + heure);
         return true;
     }
-    public boolean supprimerRendezVous(LocalDate date, LocalTime heure) {
-        for (RendezVous rdv : ListeRdv) {
-            if (rdv.getDate().equals(date) && rdv.getHeure().equals(heure)) {
-                ListeRdv.remove(rdv);
-                System.out.println("Rendez-vous supprimé avec succès pour " + date + " à " + heure);
-                return true;
-            }
-        }
-        System.out.println("Aucun rendez-vous trouvé pour le " + date + " à " + heure);
-        return false;
-    }
-    public void rechercherRdvParNom(String nomPatient) {
-        System.out.println("Rendez-vous pour le patient " + nomPatient + " :");
-        for (RendezVous rdv : ListeRdv) {
-            if (rdv.getPatient().get_nom().equalsIgnoreCase(nomPatient)) {
-                System.out.println("Date : " + rdv.getDate() + " - Heure : " + rdv.getHeure());
-            }
+    public boolean supprimerRendezVousParNom(String nomPatient) {
+    // Parcourez la liste des rendez-vous
+    for (RendezVous rdv : ListeRdv){
+       
+        // Vérifiez si le nom du patient du rendez-vous correspond au nom fourni
+        if (rdv.getPatient().get_nom().equalsIgnoreCase(nomPatient)) {
+            // Si une correspondance est trouvée, supprimez ce rendez-vous de la liste
+            ListeRdv.remove(rdv);
+            System.out.println("Rendez-vous supprimé avec succès pour le patient " + nomPatient);
+            return true;
         }
     }
+    // Si aucun rendez-vous avec le nom fourni n'est trouvé, retournez false
+    System.out.println("Aucun rendez-vous trouvé pour le patient " + nomPatient);
+    return false;
+}
+
+public String rechercherRdvParNom(String nomPatient) {
+    StringBuilder rdvInfo = new StringBuilder();
+    for (RendezVous rdv : ListeRdv) {
+        if (rdv.getPatient().get_nom().equalsIgnoreCase(nomPatient)) {
+            rdvInfo.append("Date : ").append(rdv.getDate()).append(" - Heure : ").append(rdv.getHeure()).append("\n");
+        }
+    }
+    return rdvInfo.toString();
+}
+
     public void afficherRdvChronologique() {
         // Tri des rendez-vous par date et heure
         Collections.sort(ListeRdv, Comparator.comparing(RendezVous::getDate).thenComparing(RendezVous::getHeure));
