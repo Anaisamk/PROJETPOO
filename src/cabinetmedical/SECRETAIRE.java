@@ -4,6 +4,8 @@
  */
 package cabinetmedical;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author anais
@@ -12,6 +14,12 @@ public class SECRETAIRE extends javax.swing.JFrame {
 
  public SECRETAIRE() {
         initComponents();
+        String classPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+    String imagePath = classPath + "image.png"; // Adjust "image.png" to your actual image file name
+    
+    // Load the image using ImageIcon
+    ImageIcon icon;
+    icon = new ImageIcon(imagePath);
     }
 
     /**
@@ -284,11 +292,8 @@ setVisible(false);
      * @param args the command line arguments
      */
 public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-              
-                new SECRETAIRE().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new SECRETAIRE().setVisible(true);
         });
     }
 
