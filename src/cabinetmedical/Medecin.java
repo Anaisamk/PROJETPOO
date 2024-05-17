@@ -58,10 +58,6 @@ public void ajoutRDV(LocalDate date,LocalTime heure,Patients patient){
     agenda.planifierRdv(date,heure,patient);    
 }
 
-//methode qui suprime un rendez vous de l'agenda
-public void supressionRDV(LocalDate date,LocalTime heure){
-    agenda.supprimerRendezVous(date,heure);    
-}
 
 //affichage
 public void affichagemedecin(){
