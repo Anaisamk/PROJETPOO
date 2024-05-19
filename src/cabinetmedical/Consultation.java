@@ -8,31 +8,39 @@ package cabinetmedical;
  *
  * @author anais
  */
+import java.time.LocalDate;
+import java.time.LocalTime;
 public class Consultation {
     // Attributs
-    private String date;
-    private String heure;
+    private Patients patient;
+    private LocalDate date;
+    private LocalTime heure;
     private String symptomes;
     private String diagnostic;
-    private String ordonnance;
     private String resultatsExamens;
+    private Prescription prescription;
 
     // Constructeur
-    public Consultation(String date, String heure, String symptomes, String diagnostic, String ordonnance, String resultatsExamens) {
+    public Consultation(Patients patient, LocalDate date, LocalTime heure, String symptomes, String diagnostic, String resultatsExamens, Prescription prescription) {
+        this.patient = patient;
         this.date = date;
         this.heure = heure;
         this.symptomes = symptomes;
         this.diagnostic = diagnostic;
-        this.ordonnance = ordonnance;
         this.resultatsExamens = resultatsExamens;
+        this.prescription = prescription;
     }
 
     // Méthodes getters
-    public String get_date() {
+    public Patients get_patient() {
+        return patient;
+    }
+
+    public LocalDate get_date() {
         return date;
     }
 
-    public String get_heure() {
+    public LocalTime get_heure() {
         return heure;
     }
 
@@ -44,8 +52,8 @@ public class Consultation {
         return diagnostic;
     }
 
-    public String get_ordonnance() {
-        return ordonnance;
+    public Prescription get_prescription() {
+        return prescription;
     }
 
     public String get_resultats_examens() {
@@ -53,11 +61,15 @@ public class Consultation {
     }
 
     // Méthodes setters
-    public void set_date(String date) {
+    public void set_patient(Patients patient) {
+        this.patient = patient;
+    }
+
+    public void set_date(LocalDate date) {
         this.date = date;
     }
 
-    public void set_heure(String heure) {
+    public void set_heure(LocalTime heure) {
         this.heure = heure;
     }
 
@@ -69,8 +81,8 @@ public class Consultation {
         this.diagnostic = diagnostic;
     }
 
-    public void set_ordonnance(String ordonnance) {
-        this.ordonnance = ordonnance;
+    public void set_prescription(Prescription prescription) {
+        this.prescription = prescription;
     }
 
     public void set_resultats_examens(String resultatsExamens) {

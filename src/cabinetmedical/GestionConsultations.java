@@ -28,14 +28,26 @@ public class GestionConsultations {
     public void établir_diagnostic(Consultation consultation, String diagnostic) {
         consultation.set_diagnostic(diagnostic);
     }
-
-    // Méthode pour émettre une ordonnance pour une consultation
-    public void émettre_ordonnance(Consultation consultation, String ordonnance) {
-        consultation.set_ordonnance(ordonnance);
+    public void ajouter_une_prescription(Consultation consultation ,Prescription prescription){
+        consultation.set_prescription(prescription);
     }
-
     // Méthode pour ajouter des résultats d'examens à une consultation
     public void ajouter_résultats_examens(Consultation consultation, String résultats_examens) {
         consultation.set_resultats_examens(résultats_examens);
+    }
+    public void ajouter_consultation(Consultation nouvelle_consultation) {
+        consultations_en_cours.add(nouvelle_consultation);
+    }
+    
+    
+    // Méthode pour rechercher une consultation par le nom, le prénom et la date
+    public Consultation rechercher_consultation(String nom, String prenom, String date) {
+        for (Consultation consultation : consultations_en_cours) {
+            Patients patient = consultation.get_patient();
+            if (patient.get_nom().equalsIgnoreCase(nom) && patient.get_prenom().equalsIgnoreCase(prenom) && consultation.get_date().equals(date)) {
+                return consultation;
+            }
+        }
+        return null; // Aucun résultat trouvé
     }
 }

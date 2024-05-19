@@ -57,8 +57,19 @@ public class GestionDossiersMedicaux{
     public void affichage_dossier_specifique(DossierMedical dossier){
         dossier.afficher_dossier_medical();
     }
+
+    public DossierMedical rechercherDossierParNumero(int numDossier) {
+    for (DossierMedical dossier : tableau_dossiers_medicaux) {
+        if (dossier.get_num_dossier() == numDossier) {
+            return dossier;
+        }
+    }
+    return null; // Aucun dossier trouvé avec ce numéro
+}
+
     
     
 
 
 }
+

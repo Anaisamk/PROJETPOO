@@ -19,7 +19,14 @@ public class Facture{
 	private LocalDate date_emission;
 	
 // Méthodes :
-	public Facture(){}
+        
+        public Facture(){}
+	public Facture(Patients patient,float montant,LocalDate date_emission){
+		this.patient=patient;
+		this.montant=montant;
+		this.date_emission=date_emission;
+
+	}
 	
 	public float calculer_montant(){
 		
@@ -31,8 +38,7 @@ public class Facture{
 	}
 	
 	// Setters and getters
-	/**
-     * @param patient****************************************************************************************/
+	
 	public void setPatient(Patients patient){
 		this.patient = patient;
 		
@@ -51,6 +57,15 @@ public class Facture{
 	public float getMontant(){ return this.montant;}
 	public LocalDate getDateEmission(){ return this.date_emission;}
 	
+
+	//affichage 
+	public void affichage_facture(){
+		patient.affichage_patient();
+		System.out.println("Montant a payer:"+montant);
+		System.out.println("Date d'emission:"+date_emission);
+
+	}
 	
 	
 }
+

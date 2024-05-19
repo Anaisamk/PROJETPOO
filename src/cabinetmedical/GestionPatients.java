@@ -56,10 +56,10 @@ public class GestionPatients {
         for (Patients patient : tableau_patients) {
             System.out.println("Nom: " + patient.get_nom() + ", Prénom: " + patient.get_prenom() +
                     ", Numéro de dossier: " + patient.get_num_dossier());
+            System.out.println("___________________________________");        
         }
     }
-
-    // Méthode pour obtenir un patient par son numéro de dossier
+    
     public Patients get_patient_par_num_dossier(String num_dossier) {
         for (Patients patient : tableau_patients) {
             if (patient.get_num_dossier().equals(num_dossier)) {
@@ -68,4 +68,35 @@ public class GestionPatients {
         }
         return null; // Retourne null si le patient n'est pas trouvé
     }
+    // Méthode pour obtenir un patient par son numéro de dossier
+    public void afficher_patient_par_num_dossier(String num_dossier) {
+    for (Patients patient : tableau_patients) {
+        if (patient.get_num_dossier().equals(num_dossier)) {
+            patient.affichage_patient();
+            return; // Sortir de la méthode après avoir trouvé le patient
+        }
+    }
+    System.out.println("Aucun patient trouvé avec le numéro de dossier : " + num_dossier);
 }
+
+public Patients get_patient_par_nom_prenom(String nom, String prenom) {
+    for (Patients patient : tableau_patients) {
+        if (patient.get_nom().equalsIgnoreCase(nom) && patient.get_prenom().equalsIgnoreCase(prenom)) {
+            return patient; // Sortir de la méthode après avoir trouvé le patient
+        }
+    }
+    return null;
+}
+public void afficher_patient_par_nom_prenom(String nom, String prenom) {
+    for (Patients patient : tableau_patients) {
+        if (patient.get_nom().equalsIgnoreCase(nom) && patient.get_prenom().equalsIgnoreCase(prenom)) {
+            patient.affichage_patient();
+            return; // Sortir de la méthode après avoir trouvé le patient
+        }
+    }
+    System.out.println("Aucun patient trouvé avec le nom '" + nom + "' et le prénom '" + prenom + "'.");
+}
+
+
+}
+
