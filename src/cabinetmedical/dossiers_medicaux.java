@@ -74,7 +74,7 @@ public class dossiers_medicaux extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(4, 85, 191));
+        jPanel2.setBackground(new java.awt.Color(0, 153, 255));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cabinetmedical/dossier.png"))); // NOI18N
 

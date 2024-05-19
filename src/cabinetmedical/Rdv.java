@@ -15,6 +15,7 @@ public class Rdv extends javax.swing.JFrame {
 private GestionRdv gestionRdv;
 private LISTERDVS listeRdv; // Ajout d'une référence à la classe LISTERDVS
 
+
 public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
     initComponents();
     this.gestionRdv = gestionRdv;
@@ -53,13 +54,14 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 204));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("RendezVous");
 
-        Listerdvs.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Listerdvs.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Listerdvs.setForeground(new java.awt.Color(0, 153, 255));
         Listerdvs.setText("Liste des rdv");
         Listerdvs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +69,8 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
             }
         });
 
+        recherche.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        recherche.setForeground(new java.awt.Color(0, 153, 255));
         recherche.setText("rechercher");
         recherche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +78,8 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 153, 255));
         jButton1.setText("SUPPRIMER RDV");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +125,10 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        ajouterrdv.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ajouterrdv.setForeground(new java.awt.Color(0, 153, 255));
         ajouterrdv.setText("ajouter");
         ajouterrdv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,10 +154,16 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 153, 255));
         jLabel2.setText("PATIENT");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 255));
         jLabel3.setText("DATE");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 153, 255));
         jLabel4.setText("HEURE");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -155,20 +171,18 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(160, 160, 160)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(DATE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                            .addComponent(PATIENT, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(HEURE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(DATE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                    .addComponent(PATIENT, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(HEURE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addComponent(ajouterrdv)))
                 .addContainerGap(252, Short.MAX_VALUE))
         );
@@ -187,9 +201,9 @@ public Rdv(GestionRdv gestionRdv, LISTERDVS listeRdv) {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(HEURE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addComponent(ajouterrdv)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(ajouterrdv, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
